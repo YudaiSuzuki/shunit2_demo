@@ -1,4 +1,4 @@
-#!/usr/local/bin/bash
+#!/bin/bash
 
 # セットアップ テストするファイルをincludeする
 oneTimeSetUp() {

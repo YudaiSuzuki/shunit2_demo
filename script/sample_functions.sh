@@ -1,4 +1,4 @@
-#!/usr/local/bin/bash
+#!/bin/bash
 
 # 引数の型チェック 数値以外はエラーとする
 checkType() {
