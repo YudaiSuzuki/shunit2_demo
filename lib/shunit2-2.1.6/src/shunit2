@@ -829,18 +829,18 @@ _shunit_generateReport()
       && _shunit_skipped_="skipped=${__shunit_assertsSkipped}"
 
   if [ ${_shunit_ok_} -eq ${SHUNIT_TRUE} ]; then
-    _shunit_msg_='OK'
+    _shunit_msg_='\e[32mOK\e[m'
     [ -n "${_shunit_skipped_}" ] \
         && _shunit_msg_="${_shunit_msg_} (${_shunit_skipped_})"
   else
-    _shunit_msg_="FAILED (${_shunit_failures_}"
+    _shunit_msg_="\e[31mFAILED (${_shunit_failures_}"
     [ -n "${_shunit_skipped_}" ] \
         && _shunit_msg_="${_shunit_msg_},${_shunit_skipped_}"
-    _shunit_msg_="${_shunit_msg_})"
+    _shunit_msg_="${_shunit_msg_})\e[m"
   fi
 
   echo
-  echo ${_shunit_msg_}
+  echo -e ${_shunit_msg_}
   __shunit_reportGenerated=${SHUNIT_TRUE}
 
   unset _shunit_failures_ _shunit_msg_ _shunit_ok_ _shunit_skipped_
@@ -967,7 +967,7 @@ _shunit_extractTestFunctions()
 
   # extract the lines with test function names, strip of anything besides the
   # function name, and output everything on a single line.
-  _shunit_regex_='^[ 	]*(function )*test[A-Za-z0-9_]* *\(\)'
+  _shunit_regex_='^[   ]*(function )*test[A-Za-z0-9_]* *\(\)'
   egrep "${_shunit_regex_}" "${_shunit_script_}" \
   |sed 's/^[^A-Za-z0-9_]*//;s/^function //;s/\([A-Za-z0-9_]*\).*/\1/g' \
   |xargs
