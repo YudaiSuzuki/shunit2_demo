@@ -41,7 +41,7 @@ testCheckInt2() {
   assertTrue $?
 }
 
-# 以上系 引数が数値以外の場合
+# 異常系 引数が数値以外の場合
 testCheckString1() {
  checkType hoge
  assertFalse $?
