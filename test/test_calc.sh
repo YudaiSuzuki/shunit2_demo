@@ -32,28 +32,28 @@ testMultErrorStatus() {
 
 # 正常系 引数が数値の場合
 testCheckInt1() {
-  checkType 9
+  isInt? 9
   assertTrue $?
 }
 
 testCheckInt2() {
-  checkType 99999999
+  isInt? 99999999
   assertTrue $?
 }
 
 # 異常系 引数が数値以外の場合
 testCheckString1() {
- checkType hoge
+ isInt? hoge
  assertFalse $?
 }
 
 testCheckString2() {
-  checkType 6gbkreo8
+  isInt? 6gbkreo8
   assertFalse $?
 }
 
 testCheckString3() {
-  checkType 999beks
+  isInt? 999beks
   assertFalse $?
 }
 
