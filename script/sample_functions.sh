@@ -1,7 +1,7 @@
 #!/usr/local/bin/bash
 
 # 引数の型チェック 数値以外はエラーとする
-checkType() {
+isInt?() {
   A=`echo "$1" | sed -e 's/[a-zA-Z]//g'`
 
   if [ "$1" = "$A" ]; then
@@ -13,7 +13,7 @@ checkType() {
 
 # 引数を*2して返す
 multBy2() {
-  checkType $1
+  isInt? $1
 
   if [ $? -eq 0 ]; then
     expr $1 \* 2
